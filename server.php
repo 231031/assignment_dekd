@@ -4,13 +4,8 @@
         $str_topic = $_POST['topic_dek'];
         $str_content = $_POST['content_dek'];
         echo $str_topic;
-        // $sql = "INSERT INTO topicdekd (topic, content) VALUES ($str_topic, $str_content)";
-        // mysqli_query($dbcon, $sql);
 
-        // Prepare the SQL statement with placeholders
         $sql = "INSERT INTO topicdekd (topic, content) VALUES (?, ?)";
-        
-        // Prepare the SQL statement
         $stmt = mysqli_prepare($dbcon, $sql);
         
         if ($stmt) {
@@ -23,19 +18,15 @@
             } else {
                 echo "Error: " . mysqli_error($dbcon);
             }
-            
-            // Close the statement
+
             mysqli_stmt_close($stmt);
         } else {
             echo "Error: " . mysqli_error($dbcon);
         }
-        
-        // Close the database connection
+
         mysqli_close($dbcon);
         
         
-    } else if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        
-    }
+    } 
 
 ?>
